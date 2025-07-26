@@ -73,7 +73,7 @@ fastify.register(async (fastify) => {
         let session = sessions.get(sessionId) || { transcript: '', streamSid: null };
         sessions.set(sessionId, session);
 
-        const openAiWs = new WebSocket('wss://api.openai.com/v1/realtime?model=gpt-4o-realtime-preview-2024-10-01', {
+        const openAiWs = new WebSocket('wss://api.openai.com/v1/realtime?model=gpt-4o-realtime-preview-2025-06-03', {
             headers: {
                 Authorization: `Bearer ${OPENAI_API_KEY}`,
                 "OpenAI-Beta": "realtime=v1"
@@ -219,7 +219,7 @@ async function makeChatGPTCompletion(transcript) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                model: "gpt-4o-2024-08-06",
+                model: "gpt-4o-realtime-preview-2025-06-03",
                 messages: [
                     { "role": "system", "content": "Extract customer details: name, availability, and any special notes from the transcript." },
                     { "role": "user", "content": transcript }
